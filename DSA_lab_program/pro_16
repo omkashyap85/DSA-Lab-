@@ -1,0 +1,58 @@
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+
+    LinkedList() {
+        head = null;
+    }
+
+    void insertAtBeginning(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
+
+    void deleteAtBeginning() {
+        if (head == null) {
+            System.out.println("List is empty. Nothing to delete.");
+            return;
+        }
+        head = head.next;
+    }
+
+    void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.insertAtBeginning(3);
+        linkedList.insertAtBeginning(2);
+        linkedList.insertAtBeginning(1);
+
+        System.out.println("Linked List:");
+        linkedList.display();
+
+        linkedList.deleteAtBeginning();
+
+        System.out.println("\nLinked List after deletion at beginning:");
+        linkedList.display();
+    }
+}
